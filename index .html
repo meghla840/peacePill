@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>শান্ত নীড়</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&family=Noto+Serif+Bengali:wght@300;400&family=Tiro+Bangla&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#eceaf8;--bg2:#f8e9ee;--bg3:#fdebd9;--ink:#3a3454;--soft:#746d8c;--orb1:#ffe2b8;--orb2:#b3a0ea;--acc:#7f70c9;--glow:rgba(150,130,220,.28);--card:rgba(255,255,255,.58);--line:rgba(110,95,160,.2);--shadow:0 14px 44px rgba(110,95,170,.16);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#14122b;--bg2:#201a3e;--bg3:#34234b;--ink:#f1ecfa;--soft:#bab1d6;--orb1:#f7d9a4;--orb2:#8a78d6;--acc:#a99bf0;--glow:rgba(150,130,230,.3);--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.15);--shadow:0 14px 44px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg1:#14122b;--bg2:#201a3e;--bg3:#34234b;--ink:#f1ecfa;--soft:#bab1d6;--orb1:#f7d9a4;--orb2:#8a78d6;--acc:#a99bf0;--glow:rgba(150,130,230,.3);--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.15);--shadow:0 14px 44px rgba(0,0,0,.35)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Hind Siliguri',system-ui,sans-serif;color:var(--ink);background:linear-gradient(165deg,var(--bg1),var(--bg2) 55%,var(--bg3));background-size:200% 200%;background-attachment:fixed;animation:drift 50s ease-in-out infinite;text-align:center;line-height:1.75}
+@keyframes drift{0%,100%{background-position:0% 0%}50%{background-position:100% 100%}}
+section{position:relative;z-index:1;max-width:32rem;margin:0 auto;padding:44px 24px}
+section+section::before{content:"";display:block;width:44px;height:1px;background:var(--line);margin:0 auto 40px}
+.serif,h1,h2,.msg{font-family:'Tiro Bangla','Noto Serif Bengali',serif}
+h1{font-weight:400;font-size:clamp(2.5rem,11vw,3.2rem);margin:14px 0 12px;letter-spacing:.02em;line-height:1.3}
+h2{font-weight:400;font-size:1.55rem;margin:0 0 10px;line-height:1.5}
+p{margin:6px 0}
+.soft{color:var(--soft);font-size:1.05rem;line-height:1.95}
+.hero{padding-top:56px;animation:arrive 1.8s ease-out both}
+@keyframes arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.stage{position:relative;width:min(62vw,250px);aspect-ratio:1;display:grid;place-items:center;margin:48px auto}
+.stage::before,.stage::after{content:"";position:absolute;border-radius:50%;border:1px solid var(--line);pointer-events:none}
+.stage::before{inset:-14%}
+.stage::after{inset:-32%;opacity:.55}
+.orb{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 34% 28%,#fffd,var(--orb1) 38%,var(--orb2) 100%);box-shadow:0 0 90px 10px var(--glow),inset -14px -18px 40px rgba(110,80,180,.25);transform:scale(.55);transition:transform 4s ease-in-out}
+.orb.in{transform:scale(1)}
+.orb.out{transform:scale(.55);transition-duration:6s}
+.cue{position:relative;font-size:1.15rem;color:#4a3f6b;text-shadow:0 1px 8px rgba(255,255,255,.6)}
+.msg{min-height:7.5em;font-size:1.4rem;font-weight:400;line-height:2;padding:0 6px;transition:opacity .8s;display:grid;place-items:center}
+.msg.fade{opacity:0}
+button{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 22px;cursor:pointer;margin:8px 4px 0;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .3s,border-color .3s,box-shadow .3s,transform .2s}
+button:hover{border-color:var(--acc);box-shadow:0 6px 22px var(--glow)}
+button:active{transform:scale(.97)}
+button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+#more,#release{background:linear-gradient(135deg,var(--acc),#a994e8);color:#fff;border-color:transparent;box-shadow:0 8px 24px var(--glow)}
+button[aria-pressed="true"]{background:linear-gradient(135deg,var(--orb1),var(--orb2));border-color:transparent;color:#2f2748;box-shadow:0 6px 26px var(--glow)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:24px 26px;text-align:left;box-shadow:var(--shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.card.care{border-left:4px solid var(--acc);line-height:1.9}
+.task{display:flex;gap:14px;align-items:center;padding:12px 0;font-size:1.05rem;cursor:pointer}
+.task+.task{border-top:1px solid var(--line)}
+.task input{appearance:none;-webkit-appearance:none;margin:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--acc);display:grid;place-items:center;flex:none;cursor:pointer;transition:background .3s}
+.task input:checked{background:var(--acc)}
+.task input:checked::after{content:"";width:6px;height:12px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.task input:checked+span{text-decoration:line-through;opacity:.55}
+.done{text-align:center;margin-top:12px;min-height:1.7em;color:var(--soft)}
+textarea{width:100%;min-height:140px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;padding:16px 18px;resize:vertical;line-height:1.9;box-shadow:var(--shadow);transition:opacity 2.5s}
+textarea::placeholder{color:var(--soft);opacity:.7}
+textarea.gone{opacity:0}
+.mix{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:16px}
+.vol{-webkit-appearance:none;appearance:none;width:70%;height:4px;border-radius:4px;background:var(--line);margin-top:20px}
+.vol::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--orb1),var(--acc));border:0;box-shadow:0 2px 12px var(--glow)}
+.vol::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--acc);border:0}
+body::before{content:"";position:fixed;left:50%;top:-180px;width:560px;height:560px;margin-left:-280px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 70%);pointer-events:none}
+.pond{position:relative;height:300px;border-radius:30px;border:1px solid var(--line);background:linear-gradient(180deg,var(--card),rgba(140,120,225,.18));box-shadow:var(--shadow),inset 0 -40px 60px rgba(140,120,225,.14);overflow:hidden;margin-top:16px}
+.bub{position:absolute;bottom:-60px;border-radius:50%;border:1px solid rgba(255,255,255,.6);background:radial-gradient(circle at 30% 26%,#fffd 0 12%,transparent 14%),radial-gradient(circle at 50% 50%,rgba(255,255,255,.1),var(--glow) 90%);box-shadow:inset 0 0 14px rgba(255,255,255,.4),0 0 18px var(--glow);opacity:.9;padding:0;margin:0;animation:rise linear infinite;transition:transform .35s,opacity .35s}
+.bub:hover{box-shadow:inset 0 0 14px rgba(255,255,255,.4),0 0 18px var(--glow)}
+.bub.pop{transform:scale(1.6);opacity:0}
+@keyframes rise{to{transform:translateY(-380px)}}
+@media (prefers-reduced-motion:reduce){.bub{animation:none;bottom:40%}}
+@media (prefers-reduced-motion:reduce){body,.hero{animation:none}.orb,.msg,textarea{transition:none}html{scroll-behavior:auto}}
+.moodmsg{min-height:6em;margin-top:18px;color:var(--soft);font-size:1.05rem;line-height:1.95;transition:opacity .6s}
+.moodmsg a{color:var(--acc)}
+.gtext{font-family:'Tiro Bangla','Noto Serif Bengali',serif;font-size:1.3rem;line-height:2;min-height:5.5em;display:grid;place-items:center;text-align:center}
+.gdots{display:flex;gap:10px;justify-content:center;margin:6px 0 4px}
+.gdots i{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--acc);transition:background .5s}
+.gdots i.on{background:var(--acc)}
+.sky{position:relative;height:300px;border-radius:30px;overflow:hidden;background:radial-gradient(ellipse at 50% 125%,#3b2b60,#1a1638 72%);border:1px solid var(--line);box-shadow:var(--shadow);margin-top:16px;cursor:pointer;touch-action:manipulation}
+.skyhint{position:absolute;inset:0;display:grid;place-items:center;color:#d3caf0;pointer-events:none;transition:opacity 1.2s}
+.ff{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#ffe9a8;box-shadow:0 0 12px 4px rgba(255,226,140,.65);pointer-events:none;opacity:0;animation:ff var(--d,14s) ease-in-out forwards}
+@keyframes ff{0%{opacity:0;transform:translate(0,0) scale(.5)}15%{opacity:1}50%{transform:translate(var(--x),var(--y)) scale(1)}85%{opacity:.8}100%{opacity:0;transform:translate(calc(var(--x)*2),calc(var(--y)*1.8)) scale(.6)}}
+@media (prefers-reduced-motion:reduce){.ff{animation:none;opacity:.9}}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<h1>শান্ত নীড়</h1>
+<p class="soft">আজ কিছু প্রমাণ করতে হবে না।<br>শুধু একটু বসো, আর নিজেকে জিরোতে দাও।</p>
+<div class="stage"><div class="orb" id="orb"></div><div class="cue" id="cue">তৈরি হও…</div></div>
+<div class="mix" id="pace"><button data-p="n" aria-pressed="true">সহজ শ্বাস</button><button data-p="g" aria-pressed="false">গভীর শ্বাস</button></div>
+<div class="msg" id="msg">মন খারাপ লাগলে তাড়াহুড়ো করে ভালো হতে হয় না।</div>
+<button id="more">আরেকটা কথা শুনি</button>
+<button id="rain" aria-pressed="false">🌧 বৃষ্টির শব্দ</button>
+</section>
+
+<section>
+<h2>এখন কেমন লাগছে?</h2>
+<p class="soft">যেটা সবচেয়ে কাছের মনে হয়, সেটা ছোঁও। কোনোটাই ভুল নয়।</p>
+<div class="mix" id="mood"><button data-m="0">😔 ভারী</button><button data-m="1">😟 অস্থির</button><button data-m="2">😶 অবশ</button><button data-m="3">🙂 ঠিক আছি</button></div>
+<div class="moodmsg" id="moodmsg" aria-live="polite"></div>
+</section>
+
+<section>
+<h2>নিজের মতো করে শব্দ মেশাও</h2>
+<p class="soft">একটা বা কয়েকটা একসাথে চালাতে পারো। ধীরে ধীরে শুরু হয়, ধীরে ধীরে থামে।</p>
+<div class="mix">
+<button data-s="ocean" aria-pressed="false">🌊 সমুদ্রের ঢেউ</button>
+<button data-s="wind" aria-pressed="false">🍃 হালকা হাওয়া</button>
+<button data-s="hum" aria-pressed="false">🌙 নরম সুর</button>
+</div>
+<input class="vol" id="vol" type="range" min="10" max="100" value="60" aria-label="আওয়াজ">
+<p class="soft" style="font-size:.9rem;margin-top:8px">আওয়াজ কম-বেশি করো</p>
+<button id="bowl">🔔 ঘণ্টার শব্দ শোনো</button>
+</section>
+
+<section>
+<h2>বুদবুদ ফোটাও</h2>
+<p class="soft">ধীরে ভেসে ওঠা বুদবুদে আঙুল ছোঁয়াও।</p>
+<div class="pond" id="pond"></div>
+</section>
+
+<section>
+<h2>মনটাকে এখানে ফিরিয়ে আনো</h2>
+<p class="soft">মাথায় ঝড় চললে চারপাশটা একটু ছুঁয়ে দেখো। একটা একটা করে।</p>
+<div class="card"><div class="gtext" id="gtext"></div><div class="gdots" id="gdots"><i></i><i></i><i></i><i></i><i></i></div>
+<div style="text-align:center"><button id="gnext">শুরু করি</button></div></div>
+</section>
+
+<section>
+<h2>জোনাকির আকাশ</h2>
+<p class="soft">আকাশে আঙুল ছোঁয়াও, একটা করে আলো জ্বলবে।</p>
+<div class="sky" id="sky"><div class="skyhint" id="skyhint">ছুঁয়ে দেখো ✨</div></div>
+</section>
+
+<section>
+<h2>খুব ছোট কয়েকটা কাজ</h2>
+<p class="soft">সবটা করতে হবে না। একটা করলেই আজ অনেক করা হলো।</p>
+<div class="card" id="tasks">
+<label class="task"><input type="checkbox"><span>এক গ্লাস পানি খাও</span></label>
+<label class="task"><input type="checkbox"><span>মুখ ধুয়ে নাও</span></label>
+<label class="task"><input type="checkbox"><span>জানালার পাশে ২ মিনিট দাঁড়াও</span></label>
+<label class="task"><input type="checkbox"><span>৫ মিনিট বাইরে হেঁটে এসো</span></label>
+<label class="task"><input type="checkbox"><span>কিছু খেয়েছ? অল্প হলেও খাও</span></label>
+<div class="done" id="done"></div>
+</div>
+</section>
+
+<section>
+<h2>যা মনে আছে, লিখে ফেলো</h2>
+<p class="soft">কেউ দেখবে না। কোথাও জমাও থাকবে না। লিখে "ছেড়ে দাও" চাপলে মুছে যাবে।</p>
+<textarea id="note" placeholder="এখানে যা খুশি লেখো…"></textarea>
+<button id="release">ছেড়ে দাও</button>
+<div class="done" id="rel"></div>
+</section>
+
+<section id="talk">
+<h2>কারো সাথে কথা বলো</h2>
+<div class="card care">
+<p>বন্ধু না থাকলেও কথা বলার মানুষ খুঁজে পাওয়া যায়। এগুলো থেকে শুরু করতে পারো:</p>
+<p>• পরিবারের এমন কেউ, যার সাথে একটু স্বস্তি পাও<br>
+• স্কুল, কলেজ বা অফিসের কোনো শিক্ষক বা পরিচিত মানুষ<br>
+• একজন কাউন্সেলর বা মনোবিদ<br>
+• তোমার দেশের মানসিক স্বাস্থ্য হেল্পলাইন (অনলাইনে খুঁজলেই পাবে, কল করা যায়)</p>
+<p><b>যদি নিজের ক্ষতি করার চিন্তা আসে</b>, এখনই কাউকে জানাও বা তোমার দেশের জরুরি নম্বরে ফোন করো। একা সামলাতে হবে না।</p>
+</div>
+</section>
+
+<section class="soft serif" style="font-size:1.25rem;line-height:2;padding-bottom:60px"><p>তুমি এখানে এসেছ,<br>এটাই আজকের সবচেয়ে সুন্দর কাজ। 🌿</p></section>
+
+<script>
+// breathing
+var orb=document.getElementById('orb'),cue=document.getElementById('cue');
+var modes={n:[4,0,6],g:[4,4,6]},cur='n',tm=[];
+function ph(txt,cls,sec,at){tm.push(setTimeout(function(){orb.className='orb '+cls;
+  for(var k=0;k<sec;k++)(function(k){tm.push(setTimeout(function(){cue.innerHTML=txt+'<br>'+(k+1);},k*1000));})(k);},at*1000));}
+function run(){tm.forEach(clearTimeout);tm=[];var p=modes[cur],t=0;
+  ph('নিঃশ্বাস নাও','in',p[0],0);t=p[0];
+  if(p[1]){ph('ধরে রাখো','in',p[1],t);t+=p[1];}
+  ph('ধীরে ছাড়ো','out',p[2],t);t+=p[2];tm.push(setTimeout(run,t*1000));}
+setTimeout(run,800);
+document.querySelectorAll('[data-p]').forEach(function(b){b.onclick=function(){cur=b.getAttribute('data-p');
+  document.querySelectorAll('[data-p]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});run();};});
+
+// messages
+var lines=['এই সময়টাও কেটে যাবে।','তুমি যতটা ভাবো, তার চেয়ে অনেক বেশি শক্ত।','আজ শুধু একটা নিঃশ্বাসই যথেষ্ট।','খারাপ দিন মানে খারাপ জীবন নয়।','নিজের প্রতি একটু নরম হও।','মন খারাপ থাকা মানে তুমি দুর্বল নও, তুমি মানুষ।','এখন যেমন লাগছে, সারাক্ষণ এমন থাকবে না।','তুমি একা নও।'];
+lines=['মেঘ যেমন আকাশে চিরকাল থাকে না, এই কষ্টও থাকবে না।','তুমি যতটা ভাবো, তার চেয়ে অনেক বেশি শক্ত।','এখন শুধু একটা নিঃশ্বাস। আজকের জন্য সেটুকুই যথেষ্ট।','অন্ধকার রাতেও ভোর আসে। একটু সময় লাগে, এই যা।','আজ নিজের সাথে একটু নরম হয়ে কথা বলো।','মন খারাপ মানে তুমি দুর্বল নও। তুমি অনুভব করতে পারো।','যা বয়ে বেড়াচ্ছ, তা ভারী। একটু নামিয়ে রাখো।','ধীরে চলাও চলা। তুমি ঠিক পথেই আছ।','তুমি এখানে আছ, আর সেটাই অনেক বড় কথা।'];
+var i=0,m=document.getElementById('msg');
+document.getElementById('more').onclick=function(){m.classList.add('fade');
+setTimeout(function(){i=(i+1)%lines.length;m.textContent=lines[i];m.classList.remove('fade');},600);};
+
+// rain sound
+var ctx=null,src=null,rb=document.getElementById('rain');
+rb.onclick=function(){
+  try{
+    if(!ctx){
+      ctx=new (window.AudioContext||window.webkitAudioContext)();
+      var len=ctx.sampleRate*2,buf=ctx.createBuffer(1,len,ctx.sampleRate),d=buf.getChannelData(0),last=0;
+      for(var k=0;k<len;k++){var w=Math.random()*2-1;last=(last+0.04*w)/1.04;d[k]=last*3.5;}
+      src=ctx.createBufferSource();src.buffer=buf;src.loop=true;
+      var f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=1400;
+      var g=ctx.createGain();g.gain.value=0.5;
+      src.connect(f);f.connect(g);g.connect(ctx.destination);src.start();
+      rb.textContent='🌧 বন্ধ করো';rb.setAttribute('aria-pressed','true');return;
+    }
+    if(ctx.state==='running'){ctx.suspend();rb.textContent='🌧 বৃষ্টির শব্দ';rb.setAttribute('aria-pressed','false');}
+    else{ctx.resume();rb.textContent='🌧 বন্ধ করো';rb.setAttribute('aria-pressed','true');}
+  }catch(e){rb.textContent='শব্দ চলছে না';}
+};
+
+// tasks
+var boxes=document.querySelectorAll('#tasks input'),dn=document.getElementById('done');
+var praise=['খুব ভালো, একটা হয়ে গেল। 🌱','দারুণ, তুমি চালিয়ে যাচ্ছ।','নিজেকে নিয়ে গর্ব করো।','প্রায় সব হয়ে গেছে!','সবগুলো শেষ! তুমি অনেক করেছ। 💚'];
+boxes.forEach(function(b){b.onchange=function(){
+  var c=0;boxes.forEach(function(x){if(x.checked)c++;});
+  dn.textContent=c?praise[Math.min(c-1,4)]:'';};});
+
+// release note
+var note=document.getElementById('note'),rel=document.getElementById('rel');
+document.getElementById('release').onclick=function(){
+  if(!note.value.trim()){rel.textContent='আগে কিছু লেখো।';return;}
+  note.classList.add('gone');rel.textContent='ছেড়ে দিলে। এবার একটা নিঃশ্বাস নাও।';
+  setTimeout(function(){note.value='';note.classList.remove('gone');},2600);
+};
+// more sounds
+var AC=null,layers={},master=0.6;
+function ac(){if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC;}
+function noise(c){var n=c.sampleRate*3,b=c.createBuffer(1,n,c.sampleRate),d=b.getChannelData(0),l=0;
+for(var k=0;k<n;k++){l=(l+0.04*(Math.random()*2-1))/1.04;d[k]=l*3.5;}
+var s=c.createBufferSource();s.buffer=b;s.loop=true;return s;}
+function lfo(c,hz,amt,target){var o=c.createOscillator(),g=c.createGain();o.frequency.value=hz;g.gain.value=amt;o.connect(g);g.connect(target);o.start();}
+function build(name){
+  var c=ac(),out=c.createGain();out.gain.value=0;out.connect(c.destination);var lvl=0.5;
+  if(name==='ocean'){var s=noise(c),f=c.createBiquadFilter(),w=c.createGain();f.type='lowpass';f.frequency.value=650;w.gain.value=0.55;
+    s.connect(f);f.connect(w);w.connect(out);lfo(c,0.1,0.4,w.gain);s.start();lvl=0.9;}
+  if(name==='wind'){var s2=noise(c),bp=c.createBiquadFilter();bp.type='bandpass';bp.frequency.value=450;bp.Q.value=0.7;
+    s2.connect(bp);bp.connect(out);lfo(c,0.07,220,bp.frequency);s2.start();lvl=0.8;}
+  if(name==='hum'){[110,165,220].forEach(function(fr,idx){var o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=fr+idx*0.3;g.gain.value=0.07/(idx+1);
+    o.connect(g);g.connect(out);lfo(c,0.05+idx*0.03,0.02,g.gain);o.start();});lvl=1;}
+  layers[name]={out:out,lvl:lvl,on:false};return layers[name];
+}
+document.querySelectorAll('[data-s]').forEach(function(b){b.onclick=function(){
+  try{var n=b.getAttribute('data-s'),L=layers[n]||build(n),c=ac(),t=c.currentTime;
+  L.on=!L.on;L.out.gain.cancelScheduledValues(t);L.out.gain.setValueAtTime(L.out.gain.value,t);
+  L.out.gain.linearRampToValueAtTime(L.on?L.lvl*master:0,t+(L.on?2.5:1.5));
+  b.setAttribute('aria-pressed',L.on?'true':'false');}catch(e){b.textContent='শব্দ চলছে না';}};});
+document.getElementById('vol').oninput=function(){master=this.value/100;var c=AC;if(!c)return;
+  for(var n in layers){var L=layers[n];if(L.on)L.out.gain.setTargetAtTime(L.lvl*master,c.currentTime,0.1);}};
+function tone(fr,dur,vol){var c=ac(),t=c.currentTime;[1,2.76,5.4].forEach(function(r,idx){var o=c.createOscillator(),g=c.createGain();
+  o.type='sine';o.frequency.value=fr*r;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol*master/(idx*2+1),t+0.03);
+  g.gain.exponentialRampToValueAtTime(0.0001,t+dur/(idx+1));o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+dur+0.1);});}
+document.getElementById('bowl').onclick=function(){try{tone(296,7,0.35);}catch(e){}};
+
+// bubbles
+var pond=document.getElementById('pond');
+function spawn(){var b=document.createElement('button'),sz=34+Math.random()*44;
+  b.className='bub';b.setAttribute('aria-label','বুদবুদ');b.style.width=b.style.height=sz+'px';
+  b.style.left=(Math.random()*85)+'%';b.style.animationDuration=(9+Math.random()*8)+'s';b.style.animationDelay=(-Math.random()*8)+'s';
+  b.onclick=function(){b.classList.add('pop');try{tone(380+Math.random()*420,1.4,0.12);}catch(e){}
+    setTimeout(function(){b.remove();spawn();},380);};
+  pond.appendChild(b);}
+for(var q=0;q<9;q++)spawn();
+
+// mood
+var mm=['ভারী লাগাটা সত্যি, আর সেটা মেনে নেওয়াটাই সাহসের কাজ। ওপরের আলোর বৃত্তের সাথে ধীরে কয়েকটা শ্বাস নাও। একা না থাকতে চাইলে <a href="#talk">এখানে</a> কয়েকটা উপায় আছে।','অস্থির লাগলে নিচের "মনটাকে এখানে ফিরিয়ে আনো" অংশটা একবার করে দেখো। মনটা ধীরে মাটিতে ফিরে আসবে।','কিছু অনুভব না হওয়াটাও ক্লান্ত মনের একটা রূপ। শুধু এক গ্লাস পানি খাও, আজ এটুকুই যথেষ্ট।','শুনে ভালো লাগল। এই ভালো ভাবটা একটু ধরে রাখো, কয়েকটা বুদবুদ ফুটিয়ে বা জোনাকির আকাশ দেখে।'];
+var mg=document.getElementById('moodmsg'),mb=document.querySelectorAll('[data-m]');
+mb.forEach(function(b){b.onclick=function(){mb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+  mg.style.opacity=0;setTimeout(function(){mg.innerHTML=mm[+b.getAttribute('data-m')];mg.style.opacity=1;},500);};});
+
+// grounding
+var gs=['চারপাশে যা দেখছ, ৫টা জিনিস খুঁজে নাও।','যা ছুঁতে পারো, ৪টা জিনিস ছুঁয়ে দেখো।','৩টা শব্দ মন দিয়ে শোনো।','২টা গন্ধ খোঁজো, বা কল্পনা করো।','একটা ভালো জিনিসের কথা ভাবো।'];
+var gi=-1,gt=document.getElementById('gtext'),gd=document.querySelectorAll('#gdots i'),gb=document.getElementById('gnext');
+gt.textContent='ধীরে, একটা একটা করে। তাড়া নেই।';
+gb.onclick=function(){gi++;
+  if(gi>=gs.length){gi=-1;gt.textContent='তুমি এখন এখানে, এই মুহূর্তে, নিরাপদ। 🌿';gd.forEach(function(d){d.className='';});gb.textContent='আবার করি';return;}
+  gt.textContent=gs[gi];gd.forEach(function(d,k){d.className=k<=gi?'on':'';});gb.textContent=gi===gs.length-1?'শেষ করি':'হয়েছে, পরেরটা';};
+
+// fireflies
+var sky=document.getElementById('sky'),hint=document.getElementById('skyhint');
+function glow(x,y){var e=document.createElement('i');e.className='ff';e.style.left=x+'px';e.style.top=y+'px';
+  e.style.setProperty('--x',((Math.random()-.5)*80)+'px');e.style.setProperty('--y',(-20-Math.random()*50)+'px');
+  e.style.setProperty('--d',(10+Math.random()*8)+'s');sky.appendChild(e);setTimeout(function(){e.remove();},19000);}
+function rnd(){glow(20+Math.random()*(sky.clientWidth-40),40+Math.random()*(sky.clientHeight-60));}
+for(var f=0;f<8;f++)rnd();
+setInterval(function(){if(!document.hidden)rnd();},2200);
+sky.onclick=function(ev){var r=sky.getBoundingClientRect();hint.style.opacity=0;
+  glow(ev.clientX-r.left,ev.clientY-r.top);try{tone(520+Math.random()*380,2.2,0.07);}catch(e){}};
+</script>
+</body>
+</html>
